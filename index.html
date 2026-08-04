@@ -14,29 +14,29 @@
 <!--
 variant:
 typo=loud
-image=medium
+image=high
 color=mono
 
-image-radius=sharp
+image-radius=soft
 card-radius=sharp
-button-radius=sharp
+button-radius=round
 
 border=hairline
-button-style=solid+text
+button-style=outline
 fw=700/400
 spacing=space-11
 -->
 
 <!--
 Layout Declaration
-Nav      — full-bleed
-Hero     — full-bleed — 8-4
-Marquee  — full-bleed
-Intro    — 5-7
-Lineup   — flush — 3-3-3-3
-Stats    — flush — 4-4-4
-Contact  — full-bleed
-Footer   — full-bleed — 6-6
+Nav       — full-bleed
+Hero      — full-bleed
+Marquee   — full-bleed (대형 워드마크 배너)
+Intro     — 5-7 (오프셋 2단 매소너리)
+Lineup    — flush — 3-3-3-3
+Moments   — flush — 3-3-3-3
+Statement — full-bleed — 6-6 (우측 정렬, 문의하기 버튼)
+Footer    — full-bleed — 4-4-4
 -->
 
 <header class="nav">
@@ -46,8 +46,8 @@ Footer   — full-bleed — 6-6
       <nav class="nav__links">
         <a href="#intro">소개</a>
         <a href="#lineup">라인업</a>
-        <a href="#stats">성과</a>
-        <a href="#contact">문의하기</a>
+        <a href="#moments">모먼츠</a>
+        <a href="#statement">문의하기</a>
       </nav>
     </div>
   </div>
@@ -55,54 +55,50 @@ Footer   — full-bleed — 6-6
 
 <main id="top">
 
-  <!-- Hero — full-bleed — 8-4 -->
+  <!-- Hero — full-bleed -->
   <section class="hero" id="hero">
     <div class="hero__bg img"></div>
     <div class="hero__dim"></div>
     <div class="wrap hero__inner">
-      <div class="hero__grid">
-        <h1 class="hero__title display">도시의 속도를,<br>새롭게 정의하다.</h1>
-        <p class="hero__desc body-1">전기 마이크로모빌리티로 라스트마일을 잇는<br>스마트 모빌리티 플랫폼, KINETIQ.</p>
+      <div class="hero__copy">
+        <h1 class="hero__title h1">도시의 속도를, 새롭게 정의하다.</h1>
+        <p class="hero__desc body-1">전기 마이크로모빌리티로 라스트마일을 잇는 스마트 모빌리티 플랫폼</p>
       </div>
-    </div>
-    <div class="wrap hero__bar">
-      <span class="hero__address">Seoul · Busan · Daegu — 42 Cities</span>
-      <span class="hero__copyright">© KINETIQ</span>
     </div>
   </section>
 
-  <!-- Marquee — full-bleed -->
+  <!-- Marquee — full-bleed (대형 워드마크 배너) -->
   <section class="marquee" aria-label="브랜드 슬로건">
     <div class="marquee-track">
       <div class="marquee-track__inner">
-        <span class="marquee-word display--md">MOVE</span>
-        <span class="marquee-word display--md marquee-word--outline">FORWARD</span>
-        <span class="marquee-word display--md">MOVE</span>
-        <span class="marquee-word display--md marquee-word--outline">FORWARD</span>
+        <span class="marquee-word">MOVE</span>
+        <span class="marquee-word marquee-word--outline">FORWARD</span>
+        <span class="marquee-word">MOVE</span>
+        <span class="marquee-word marquee-word--outline">FORWARD</span>
       </div>
     </div>
-    <p class="marquee__caption subtle">멈추지 않는 이동의 시작</p>
   </section>
 
-  <!-- Intro — 5-7 -->
+  <!-- Intro — 5-7 (오프셋 2단 매소너리) -->
   <section class="intro section" id="intro">
     <div class="container">
       <div class="intro__grid">
         <div class="intro__copy">
           <p class="h1">키네틱은</p>
-          <p class="h1 subtle">이동을 재설계합니다.</p>
+          <p class="h2 subtle">이동을 재설계합니다.</p>
           <span class="intro__bar" aria-hidden="true"></span>
-          <p class="badge">#MICROMOBILITY</p>
-          <p class="body-1 measure intro__text">전기 스쿠터와 자전거, 라이더 전용 앱을 하나의 흐름으로 연결해 도심 곳곳의 짧은 이동을 더 빠르고 가볍게 만듭니다.</p>
+          <p class="intro__tag h1">#MICROMOBILITY</p>
         </div>
         <div class="intro__gallery">
           <div class="intro__col">
-            <div class="img img--4-3"></div>
-            <div class="img img--1-1"></div>
+            <figure class="intro__item"><div class="img intro__photo img--4-3"></div><figcaption>도심 전기 스쿠터 스테이션</figcaption></figure>
+            <figure class="intro__item"><div class="img intro__photo img--1-1"></div><figcaption>KINETIQ 라이더 앱</figcaption></figure>
+            <figure class="intro__item"><div class="img intro__photo img--4-3"></div><figcaption>야간 배터리 교체 스테이션</figcaption></figure>
           </div>
           <div class="intro__col intro__col--offset">
-            <div class="img img--1-1"></div>
-            <div class="img img--4-3"></div>
+            <figure class="intro__item"><div class="img intro__photo img--1-1"></div><figcaption>라스트마일 전기 자전거</figcaption></figure>
+            <figure class="intro__item"><div class="img intro__photo img--4-3"></div><figcaption>도심 마이크로모빌리티 존</figcaption></figure>
+            <figure class="intro__item"><div class="img intro__photo img--1-1"></div><figcaption>안전 헬멧 스테이션</figcaption></figure>
           </div>
         </div>
       </div>
@@ -112,111 +108,85 @@ Footer   — full-bleed — 6-6
   <!-- Lineup — flush — 3-3-3-3 -->
   <section class="lineup section" id="lineup">
     <div class="container--flush">
-      <div class="section-head">
-        <h2 class="display-thin">LINEUP</h2>
-        <p class="section-head__eyebrow subtle">도심 이동 방식에 맞춘 KINETIQ의 모빌리티 라인업입니다.</p>
-      </div>
-      <div class="lineup__grid">
-        <div class="lineup__card lineup__card--tall">
-          <div class="img lineup__photo"></div>
-          <p class="lineup__label"><span class="kr">키네틱 스쿠터 S1</span><span class="en">SCOOTER S1</span></p>
-        </div>
-        <div class="lineup__card">
-          <div class="img lineup__photo"></div>
-          <p class="lineup__label"><span class="kr">키네틱 바이크 E1</span><span class="en">E-BIKE E1</span></p>
-        </div>
-        <div class="lineup__card">
-          <div class="img lineup__photo"></div>
-          <p class="lineup__label"><span class="kr">키네틱 스테이션</span><span class="en">DOCK STATION</span></p>
-        </div>
-        <div class="lineup__card lineup__card--tall">
-          <div class="img lineup__photo"></div>
-          <p class="lineup__label"><span class="kr">키네틱 라이더 앱</span><span class="en">RIDER APP</span></p>
-        </div>
+      <h2 class="section-head display-thin">LINEUP</h2>
+      <div class="gallery-grid">
+        <figure class="gallery-card"><div class="img gallery-card__photo"></div><figcaption><span class="kr">키네틱 스쿠터 S1</span><span class="en">SCOOTER S1</span></figcaption></figure>
+        <figure class="gallery-card"><div class="img gallery-card__photo"></div><figcaption><span class="kr">키네틱 바이크 E1</span><span class="en">E-BIKE E1</span></figcaption></figure>
+        <figure class="gallery-card"><div class="img gallery-card__photo"></div><figcaption><span class="kr">키네틱 스테이션</span><span class="en">DOCK STATION</span></figcaption></figure>
+        <figure class="gallery-card"><div class="img gallery-card__photo"></div><figcaption><span class="kr">키네틱 라이더 앱</span><span class="en">RIDER APP</span></figcaption></figure>
       </div>
     </div>
   </section>
 
-  <!-- Stats — flush — 4-4-4 -->
-  <section class="stats section" id="stats">
+  <!-- Moments — flush — 3-3-3-3 -->
+  <section class="moments section" id="moments">
     <div class="container--flush">
-      <div class="stats__head">
-        <h2 class="display-thin">IN NUMBERS</h2>
-        <p class="subtle">도시 곳곳에서 쌓아온 KINETIQ의 이동 데이터입니다.</p>
-      </div>
-      <div class="stats__grid">
-        <div class="stats__item">
-          <p class="num"><span class="count" data-count="18000" data-suffix="+">0</span></p>
-          <p class="label">운영 차량 대수</p>
-        </div>
-        <div class="stats__item">
-          <p class="num"><span class="count" data-count="42" data-suffix="개">0</span></p>
-          <p class="label">서비스 운영 도시</p>
-        </div>
-        <div class="stats__item">
-          <p class="num"><span class="count" data-count="99.2" data-suffix="%" data-decimals="1">0</span></p>
-          <p class="label">서비스 가동률</p>
-        </div>
+      <h2 class="section-head display-thin">MOMENTS</h2>
+      <div class="gallery-grid">
+        <figure class="gallery-card"><div class="img gallery-card__photo"></div><figcaption><span class="kr">퇴근길, 5분 빠른 선택</span><span class="en">EVENING COMMUTE</span></figcaption></figure>
+        <figure class="gallery-card"><div class="img gallery-card__photo"></div><figcaption><span class="kr">한강을 따라 달리다</span><span class="en">RIVERSIDE RIDE</span></figcaption></figure>
+        <figure class="gallery-card"><div class="img gallery-card__photo"></div><figcaption><span class="kr">캠퍼스 안, 새로운 이동</span><span class="en">CAMPUS MOBILITY</span></figcaption></figure>
+        <figure class="gallery-card"><div class="img gallery-card__photo"></div><figcaption><span class="kr">주말 나들이의 동반자</span><span class="en">WEEKEND TRIP</span></figcaption></figure>
       </div>
     </div>
   </section>
 
-  <!-- Contact — full-bleed -->
-  <section class="contact section" id="contact">
-    <div class="container--flush">
-      <div class="contact__head">
-        <h2 class="display-thin">Contact</h2>
-        <p class="contact__eyebrow subtle">문의하기</p>
-      </div>
-      <div class="contact__frame">
-        <div class="img contact__photo"></div>
-        <div class="contact__card">
-          <p class="contact__desc">서비스 도입부터 파트너십까지, KINETIQ 담당자가 직접 상담해 드립니다.</p>
-          <div class="contact__info">
-            <span>contact@kinetiq.io</span>
-            <span>02-1234-5678</span>
-          </div>
-          <a href="mailto:contact@kinetiq.io" class="contact__btn">문의하기</a>
-        </div>
+  <!-- Statement — full-bleed — 6-6 (우측 정렬, 문의하기 버튼) -->
+  <section class="statement" id="statement">
+    <div class="statement__bg img"></div>
+    <div class="wrap statement__grid">
+      <div class="statement__copy">
+        <p class="statement__line h1">MOVE THE CITY</p>
+        <p class="statement__line h1">FORWARD</p>
+        <p class="statement__line h1">WITH US</p>
+        <a href="mailto:contact@kinetiq.io" class="statement__btn">문의하기</a>
       </div>
     </div>
   </section>
 
 </main>
 
-<!-- Footer — full-bleed — 6-6 -->
+<!-- Footer — full-bleed — 4-4-4 -->
 <footer class="footer">
   <div class="wrap">
-    <div class="footer__grid">
-      <h2 class="footer__title">Redefining<br><strong>Urban Movement.</strong></h2>
-      <div class="footer__right">
-        <div class="footer__brand-row">
-          <span class="footer__mark">KINETIQ</span>
-          <div class="footer__social">
-            <a href="#" aria-label="Instagram">IG</a>
-            <a href="#" aria-label="YouTube">▶</a>
-          </div>
+    <div class="footer__row">
+      <div class="footer__col">
+        <span class="footer__col-title">Support</span>
+        <div class="footer__col-links">
+          <a href="#">자주 묻는 질문</a>
+          <a href="#">고객센터</a>
+          <a href="#">대여소 위치</a>
+          <a href="#">계정정보</a>
         </div>
-        <div class="footer__support">
-          <span class="footer__support-title">Support</span>
-          <div class="footer__support-links">
-            <a href="#">자주 묻는 질문</a>
-            <a href="#">고객센터</a>
-            <a href="#">서비스 이용안내</a>
-            <a href="#">계정정보</a>
-          </div>
-        </div>
-        <div class="footer__links">
-          <a href="#">개인정보처리방침</a>
-          <a href="#">이용약관</a>
-        </div>
-        <div class="footer__contact">
-          <span>서울 성동구 성수동 123</span>
-          <span>대표전화: 02-1234-5678</span>
-          <span>E-mail: contact@kinetiq.io</span>
-        </div>
-        <p class="footer__copyright">Copyright ⓒ KINETIQ Inc. All rights reserved.</p>
       </div>
+      <div class="footer__col">
+        <span class="footer__col-title">Company</span>
+        <div class="footer__col-links">
+          <a href="#">브랜드 스토리</a>
+          <a href="#">채용</a>
+          <a href="#">보도자료</a>
+          <a href="#">파트너십 문의</a>
+        </div>
+      </div>
+      <div class="footer__col footer__col--brand">
+        <span class="footer__col-title">More Inspiration</span>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="YouTube">YT</a>
+          <a href="#" aria-label="X">X</a>
+        </div>
+        <div class="footer__mark-row">
+          <span class="footer__mark">KINETIQ</span>
+          <span class="footer__mark-caption">RIDE WITH THE CITY</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__legal">
+        <a href="#">개인정보처리방침</a>
+        <a href="#">이용약관</a>
+      </div>
+      <p class="footer__copyright">Copyright ⓒ KINETIQ Inc. All rights reserved.</p>
     </div>
   </div>
 </footer>
