@@ -1,0 +1,168 @@
+/* =========================================================
+   KINETIQ — 도심 마이크로모빌리티 랜딩페이지
+   컴포넌트 전용. styles.css(디자인 키트)는 수정하지 않음.
+   variant: typo=loud / image=medium / color=mono / image-radius=sharp(0) /
+            card-radius=sharp(0) / button-radius=sharp(0) / border=hairline /
+            button-style=solid+text / fw=700/400 / spacing=space-11
+   이미지 영역은 --color-placeholder(#d9d9d9) 고정, 임의 색상/자간/행간 없음.
+   문의하기 버튼 외 버튼 요소 없음(내비게이션 링크·소셜은 텍스트/앵커).
+   ========================================================= */
+
+html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
+.wrap{width:100%;padding-inline:var(--gutter);}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:transparent;
+  border-bottom:1px solid transparent;transition:background .25s ease,border-color .25s ease;}
+.nav__row{display:flex;align-items:center;justify-content:space-between;min-height:88px;gap:var(--space-5);}
+.nav__mark{font-size:var(--fs-h3);font-weight:var(--fw-strong);letter-spacing:var(--display-tracking);
+  color:var(--text-default-inverse);transition:color .25s ease;flex:0 0 auto;}
+.nav__links{display:flex;align-items:center;gap:var(--space-6);overflow-x:auto;scrollbar-width:none;}
+.nav__links::-webkit-scrollbar{display:none;}
+.nav__links a{font-size:var(--fs-body-2);font-weight:var(--fw-base);white-space:nowrap;
+  color:rgba(255,255,255,.88);transition:color .25s ease;}
+.nav__links a:hover{color:var(--text-default-inverse);}
+.nav.is-scrolled{background:var(--color-canvas);border-bottom:var(--border-1);}
+.nav.is-scrolled .nav__mark{color:var(--text-default);}
+.nav.is-scrolled .nav__links a{color:var(--text-default);}
+.nav.is-scrolled .nav__links a:hover{color:var(--text-subtle);}
+
+/* ---------- hero (full-bleed — 8-4) ---------- */
+.hero{position:relative;overflow:hidden;min-height:92vh;display:flex;align-items:center;}
+.hero__bg{position:absolute;inset:0;width:100%;height:100%;border-radius:0;}
+.hero__dim{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(10,10,12,.15) 0%,rgba(10,10,12,.1) 45%,rgba(10,10,12,.55) 100%);}
+.hero__inner{position:relative;z-index:2;width:100%;padding-block:var(--space-11);}
+.hero__grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--grid-gutter-lg);align-items:end;}
+.hero__title{grid-column:1/9;min-width:0;color:var(--text-default);
+  font-weight:var(--fw-strong);letter-spacing:-0.02em;line-height:0.98;
+  font-size:clamp(40px,6.4vw,110px);}
+.hero__desc{grid-column:1/9;min-width:0;margin-top:var(--space-6);color:var(--text-subtle);}
+.hero__bar{position:absolute;left:0;right:0;bottom:0;z-index:2;
+  display:flex;align-items:center;justify-content:space-between;gap:var(--space-5);
+  padding-block:var(--space-6);}
+.hero__address,.hero__copyright{color:var(--text-subtle);font-size:var(--fs-badge);}
+@media (max-width:768px){
+  .hero{min-height:76vh;}
+  .hero__title,.hero__desc{grid-column:1/13;}
+  .hero__bar{flex-direction:column;align-items:flex-start;gap:var(--space-2);}
+}
+
+/* ---------- marquee (full-bleed, 대형 워드 배너) ---------- */
+.marquee{overflow:hidden;padding-block:var(--space-10);background:var(--color-primary-900);}
+.marquee-track{overflow:hidden;}
+.marquee-track__inner{display:flex;align-items:center;gap:var(--space-7);width:max-content;
+  animation:marquee-scroll 26s linear infinite;}
+.marquee-track:hover .marquee-track__inner{animation-play-state:paused;}
+@keyframes marquee-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.marquee-word{font-weight:var(--fw-strong);letter-spacing:var(--display-tracking);color:var(--text-default-inverse);white-space:nowrap;}
+.marquee-word--outline{color:transparent;-webkit-text-stroke:1px var(--text-default-inverse);}
+.marquee__caption{text-align:center;margin-top:var(--space-6);color:var(--text-subtle-inverse);}
+
+/* ---------- container--flush / display-thin ---------- */
+.container--flush{width:100%;max-width:none;padding-inline:64px;margin-inline:auto;}
+@media (max-width:1024px){.container--flush{padding-inline:48px;}}
+@media (max-width:768px){.container--flush{padding-inline:24px;}}
+.display-thin{font-weight:var(--fw-base);line-height:0.94;letter-spacing:-0.02em;
+  font-size:clamp(32px,5.2vw,96px);}
+
+/* ---------- section head ---------- */
+.section-head{margin-bottom:var(--space-8);}
+.section-head__eyebrow{color:var(--text-subtle);margin-top:var(--space-4);font-size:var(--fs-body-1);}
+
+/* ---------- intro (5-7) ---------- */
+.intro__grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--grid-gutter-lg);align-items:start;}
+.intro__copy{grid-column:1/6;min-width:0;}
+.intro__bar{display:block;width:8px;height:70px;background:var(--text-default);margin-block:var(--space-6);}
+.intro__text{margin-top:var(--space-4);color:var(--text-subtle);}
+.intro__gallery{grid-column:6/13;min-width:0;display:grid;grid-template-columns:repeat(2,1fr);gap:var(--grid-gutter-md);}
+.intro__col{display:flex;flex-direction:column;gap:var(--grid-gutter-md);}
+.intro__col--offset{margin-top:var(--space-8);}
+@media (max-width:1024px){
+  .intro__copy,.intro__gallery{grid-column:1/13;}
+  .intro__gallery{margin-top:var(--space-8);}
+}
+@media (max-width:768px){
+  .intro__col--offset{margin-top:0;}
+}
+
+/* ---------- lineup (flush — 3-3-3-3) ---------- */
+.lineup__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--grid-gutter-md);}
+.lineup__card{position:relative;}
+.lineup__photo{aspect-ratio:3/4;}
+.lineup__card--tall .lineup__photo{aspect-ratio:3/5;}
+.lineup__label{margin-top:var(--space-4);font-size:var(--fs-body-2);line-height:1.4;}
+.lineup__label .kr{display:block;font-weight:var(--fw-strong);}
+.lineup__label .en{display:block;color:var(--text-subtle);text-transform:uppercase;font-size:var(--fs-badge);margin-top:var(--space-1);}
+@media (max-width:1024px){.lineup__grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:768px){
+  .lineup__grid{grid-template-columns:1fr;}
+  .lineup__card--tall .lineup__photo{aspect-ratio:3/4;}
+}
+
+/* ---------- stats (flush — 4-4-4, dark band) ---------- */
+.stats{background:var(--color-primary-900);color:var(--text-default-inverse);}
+.stats__head{text-align:center;max-width:720px;margin-inline:auto;}
+.stats__head .subtle{color:var(--text-subtle-inverse);margin-top:var(--space-4);}
+.stats__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-8);margin-top:var(--space-10);
+  border-top:1px solid var(--color-primary-700);padding-top:var(--space-8);}
+.stats__item{text-align:center;}
+.stats__item .num{font-size:var(--fs-h1);font-weight:var(--fw-strong);}
+.stats__item .label{margin-top:var(--space-3);color:var(--text-subtle-inverse);}
+@media (max-width:768px){.stats__grid{grid-template-columns:1fr;gap:var(--space-6);}}
+
+/* ---------- contact ---------- */
+.contact__head{text-align:center;margin-bottom:var(--space-8);}
+.contact__eyebrow{color:var(--text-subtle);margin-top:var(--space-4);}
+.contact__frame{position:relative;overflow:hidden;}
+.contact__photo{aspect-ratio:16/7;border-radius:0;}
+.contact__card{position:absolute;left:0;bottom:0;right:0;z-index:1;padding:var(--space-7);
+  display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--space-6);
+  background:linear-gradient(180deg,rgba(10,10,12,0) 0%,rgba(10,10,12,.82) 100%);}
+.contact__desc{max-width:560px;color:var(--text-default-inverse);font-size:var(--fs-h3);line-height:1.4;}
+.contact__info{display:flex;flex-direction:column;gap:var(--space-2);color:var(--text-subtle-inverse);font-size:var(--fs-body-1);}
+.contact__btn{display:inline-flex;align-items:center;justify-content:center;min-height:76px;
+  padding-inline:var(--space-8);border-radius:var(--radius-0);background:var(--color-canvas);
+  color:var(--text-default);font-size:var(--fs-h3);font-weight:var(--fw-strong);white-space:nowrap;
+  transition:background .2s ease;}
+.contact__btn:hover{background:var(--color-primary-100);}
+@media (max-width:768px){
+  .contact__photo{aspect-ratio:3/4;}
+  .contact__card{align-items:flex-start;flex-direction:column;}
+}
+
+/* ---------- footer (full-bleed — 6-6) ---------- */
+.footer{border-block-start:var(--border-1);padding-block:var(--space-12);}
+.footer__grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--grid-gutter-lg);}
+.footer__title{grid-column:1/7;min-width:0;font-size:var(--fs-display-sm);font-weight:var(--fw-base);
+  letter-spacing:var(--display-tracking);color:var(--text-subtle);}
+.footer__title strong{color:var(--text-default);font-weight:var(--fw-strong);}
+.footer__right{grid-column:7/13;display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-6);}
+.footer__brand-row{display:flex;align-items:center;gap:var(--space-5);}
+.footer__mark{font-size:var(--fs-h3);font-weight:var(--fw-strong);}
+.footer__social{display:flex;gap:var(--space-3);}
+.footer__social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;
+  border-radius:var(--radius-circle);border:var(--border-1);font-size:var(--fs-badge);}
+.footer__support{text-align:right;}
+.footer__support-title{display:block;font-size:var(--fs-badge);font-weight:var(--fw-strong);color:var(--text-subtle);
+  text-transform:uppercase;margin-bottom:var(--space-3);}
+.footer__support-links{display:flex;gap:var(--space-5);flex-wrap:wrap;justify-content:flex-end;}
+.footer__support-links a{font-size:var(--fs-body-2);color:var(--text-subtle);}
+.footer__links{display:flex;gap:var(--space-5);}
+.footer__links a{font-size:var(--fs-body-2);color:var(--text-subtle);}
+.footer__contact{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:var(--space-4);
+  color:var(--text-subtle);font-size:var(--fs-body-2);}
+.footer__copyright{color:var(--text-subtle);font-size:var(--fs-body-2);text-align:right;}
+@media (max-width:1024px){
+  .footer__title{grid-column:1/13;}
+  .footer__right{grid-column:1/13;align-items:flex-start;}
+  .footer__support,.footer__support-links,.footer__contact,.footer__copyright{text-align:left;justify-content:flex-start;}
+}
+@media (max-width:768px){
+  .footer__brand-row{flex-wrap:wrap;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .marquee-track__inner{animation:none;}
+}
