@@ -142,25 +142,36 @@
     );
   }
 
-  // Moments — 카드가 겹쳐 있다가 화면에 들어오면 5도씩 꺾이며 펼쳐짐
+  // Moments — MOMENTS에 도착하면 겹친 카드가 보이고, 스크롤한 만큼
+  // 5도씩 차이나는 각도가 점점 풀리며 원래 그리드 위치로 펼쳐짐
   const momentsGrid = document.querySelector('.moments__grid');
   if (momentsGrid) {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) {
-      momentsGrid.classList.add('is-open');
+      momentsGrid.style.setProperty('--p', 1);
     } else {
-      const momentsObserver = new IntersectionObserver(
-        (entries, obs) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              momentsGrid.classList.add('is-open');
-              obs.disconnect();
-            }
-          });
+      let ticking = false;
+      const updateMoments = () => {
+        const rect = momentsGrid.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const start = vh; // 그리드 상단이 뷰포트 하단에 닿을 때 = 0(겹쳐있음)
+        const end = vh * 0.35; // 그리드 상단이 뷰포트 위쪽 35% 지점 = 1(완전히 펼쳐짐)
+        const progress = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
+        momentsGrid.style.setProperty('--p', progress);
+        ticking = false;
+      };
+      updateMoments();
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (!ticking) {
+            requestAnimationFrame(updateMoments);
+            ticking = true;
+          }
         },
-        { threshold: 0.3 }
+        { passive: true }
       );
-      momentsObserver.observe(momentsGrid);
+      window.addEventListener('resize', updateMoments);
     }
   }
 })();
