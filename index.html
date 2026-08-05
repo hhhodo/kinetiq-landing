@@ -55,10 +55,19 @@ Footer    — full-bleed — 4-4-4
 
 <main id="top">
 
-  <!-- Hero — full-bleed -->
+  <!-- Hero — full-bleed (자동 전환 슬라이드 + 페이지네이션 바) -->
   <section class="hero" id="hero">
-    <div class="hero__bg img"></div>
+    <div class="hero__slides">
+      <div class="hero__slide is-active"><div class="hero__bg img"></div></div>
+      <div class="hero__slide"><div class="hero__bg img"></div></div>
+      <div class="hero__slide"><div class="hero__bg img"></div></div>
+    </div>
     <div class="hero__copy">
+      <div class="hero__pagination" role="presentation">
+        <span class="hero__pagination-bar is-active"><span class="hero__pagination-fill"></span></span>
+        <span class="hero__pagination-bar"><span class="hero__pagination-fill"></span></span>
+        <span class="hero__pagination-bar"><span class="hero__pagination-fill"></span></span>
+      </div>
       <h1 class="hero__title h1">도시의 속도를, 새롭게 정의하다.</h1>
       <p class="hero__desc body-1">전기 마이크로모빌리티로 라스트마일을 잇는 스마트 모빌리티 플랫폼</p>
     </div>
