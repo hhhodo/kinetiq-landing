@@ -54,21 +54,25 @@
     }
   }
 
-  // Reveal — 이미지 있는 줄과 그냥 줄이 번갈아 총 5줄, 스크롤한 만큼 위에서부터
-  // 한 줄씩 좌→우로 채워짐(글은 색이, 줄 중간 이미지는 알약 너비가 같은 진행률로 함께 채워짐)
+  // Reveal — 이미지 있는 줄과 그냥 줄이 번갈아 총 5줄, 스크롤한 만큼 모든 줄이
+  // 동시에 좌→우로 채워짐(글은 색이, 줄 중간 이미지는 알약 너비가 같은 진행률로 함께 채워짐)
   const reveal = document.querySelector('.reveal');
   const lineEls = document.querySelectorAll('.rv-line');
   if (reveal && lineEls.length) {
-    let lines = [];
+    let plainLines = [];
+    let imageLines = [];
 
     const measure = () => {
-      lines = Array.from(lineEls).map((el) => {
+      plainLines = Array.from(lineEls).filter((el) => !el.classList.contains('rv-line--image'));
+      imageLines = Array.from(document.querySelectorAll('.rv-line--image')).map((el) => {
         const img = el.querySelector('.rv-chip__img');
-        if (!img) return { el, img: null };
+        const before = el.querySelector('.rv-line__before');
+        const after = el.querySelector('.rv-line__after');
         const lineRect = el.getBoundingClientRect();
         const chipRect = img.parentElement.getBoundingClientRect();
         return {
-          el,
+          before,
+          after,
           img,
           chipLeft: chipRect.left - lineRect.left,
           chipWidth: chipRect.width,
@@ -83,15 +87,16 @@
       const scrollable = rect.height - window.innerHeight;
       const progress = scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 0;
 
-      const raw = progress * lines.length;
-      lines.forEach(({ el, img, chipLeft, chipWidth, lineWidth }, i) => {
-        const lineFrac = Math.min(1, Math.max(0, raw - i));
-        el.style.backgroundPositionX = `${(1 - lineFrac) * 100}%`;
-        if (img) {
-          const wipeX = lineFrac * lineWidth;
-          const chipFrac = chipWidth > 0 ? Math.min(1, Math.max(0, (wipeX - chipLeft) / chipWidth)) : 0;
-          img.style.width = `${chipFrac * 100}%`;
-        }
+      plainLines.forEach((el) => {
+        el.style.backgroundPositionX = `${(1 - progress) * 100}%`;
+      });
+      imageLines.forEach(({ before, after, img, chipLeft, chipWidth, lineWidth }) => {
+        const pos = `${(1 - progress) * 100}%`;
+        before.style.backgroundPositionX = pos;
+        after.style.backgroundPositionX = pos;
+        const wipeX = progress * lineWidth;
+        const chipFrac = chipWidth > 0 ? Math.min(1, Math.max(0, (wipeX - chipLeft) / chipWidth)) : 0;
+        img.style.width = `${chipFrac * 100}%`;
       });
       ticking = false;
     };
