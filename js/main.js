@@ -154,8 +154,8 @@
       const updateMoments = () => {
         const rect = momentsGrid.getBoundingClientRect();
         const vh = window.innerHeight;
-        const start = vh; // 그리드 상단이 뷰포트 하단에 닿을 때 = 0(겹쳐있음)
-        const end = vh * 0.35; // 그리드 상단이 뷰포트 위쪽 35% 지점 = 1(완전히 펼쳐짐)
+        const start = vh * 0.75; // 그리드가 이미 화면에 상당히 들어온 뒤에야 시작 = 0(겹쳐있음)
+        const end = 0; // 그리드 상단이 뷰포트 맨 위에 닿을 때 = 1(완전히 펼쳐짐)
         const progress = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
         momentsGrid.style.setProperty('--p', progress);
         ticking = false;
