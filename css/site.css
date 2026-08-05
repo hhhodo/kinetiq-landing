@@ -101,22 +101,26 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 /* ---------- reveal (full-bleed, 이미지·글·이미지·글·이미지 5줄 순차 좌→우 채움) ---------- */
 .reveal{position:relative;height:280vh;}
 .reveal__sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden;}
-.rv-lines{display:flex;flex-direction:column;align-items:center;gap:var(--space-7);text-align:center;}
-.rv-line--text{max-width:1000px;font-size:clamp(22px,3.2vw,40px);line-height:1.5;font-weight:var(--fw-base);
+.rv-lines{display:flex;flex-direction:column;align-items:center;gap:var(--space-6);text-align:center;}
+.rv-line{max-width:1100px;font-size:clamp(22px,3.2vw,40px);line-height:1.5;font-weight:var(--fw-base);
   letter-spacing:var(--tracking-kr);color:var(--color-primary-200);}
 @supports ((background-clip:text) or (-webkit-background-clip:text)){
-  .rv-line--text{
+  .rv-line{
     color:transparent;background-repeat:no-repeat;background-size:200% 100%;background-position:100% 0;
     -webkit-background-clip:text;background-clip:text;
     background-image:linear-gradient(90deg,var(--text-default) 0%,var(--text-default) 50%,var(--color-primary-200) 50%,var(--color-primary-200) 100%);
   }
 }
-.rv-line--image{display:flex;justify-content:center;width:100%;}
-.rv-chip{display:flex;align-items:center;width:9em;height:2.2em;}
+.rv-line--image{display:flex;align-items:center;justify-content:center;flex-wrap:nowrap;gap:0 var(--space-3);
+  max-width:1300px;white-space:nowrap;}
+.rv-chip{display:inline-flex;align-items:center;vertical-align:middle;width:6em;height:1.6em;flex:0 0 auto;}
 .rv-chip__img{width:0;height:100%;border-radius:var(--radius-circle);}
+@media (max-width:1024px){
+  .rv-line--image{white-space:normal;flex-wrap:wrap;}
+}
 @media (max-width:768px){
   .reveal{height:320vh;}
-  .rv-chip{width:6.5em;height:1.9em;}
+  .rv-chip{width:5em;height:1.4em;}
 }
 
 /* ---------- gallery (flush — 3-3-3-3, Lineup / Moments 공용) ---------- */
