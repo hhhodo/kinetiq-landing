@@ -71,16 +71,16 @@
       imageLines = Array.from(document.querySelectorAll('.rv-line--image')).map((el) => {
         const beforeFill = el.querySelector('.rv-line__before .rv-fill');
         const afterFill = el.querySelector('.rv-line__after .rv-fill');
-        const img = el.querySelector('.rv-chip__img');
+        const grow = el.querySelector('.rv-chip__grow');
         const lineRect = el.getBoundingClientRect();
         const rectOf = (node) => node.getBoundingClientRect();
         const beforeRect = rectOf(beforeFill);
-        const chipRect = rectOf(img.parentElement);
+        const chipRect = rectOf(grow.parentElement);
         const afterRect = rectOf(afterFill);
         return {
           lineWidth: lineRect.width,
           before: { el: beforeFill, left: beforeRect.left - lineRect.left, width: beforeRect.width },
-          chip: { el: img, left: chipRect.left - lineRect.left, width: chipRect.width },
+          chip: { el: grow, left: chipRect.left - lineRect.left, width: chipRect.width },
           after: { el: afterFill, left: afterRect.left - lineRect.left, width: afterRect.width },
         };
       });
