@@ -54,24 +54,16 @@
     }
   }
 
-  // Reveal — 스크롤한 만큼 텍스트 전체 줄이 좌→우로 한번에 채워지고,
-  // 문장 중간 이미지 칩도 같은 와이프가 지나는 동안 알약 모양 그대로(양끝 라운드 유지) 좌→우로 자라남
+  // Reveal — 이미지·글·이미지·글·이미지 5줄을 스크롤한 만큼 위에서부터 순서대로,
+  // 각 줄은 좌→우로(글은 색이, 이미지는 알약 너비가) 채워짐
   const reveal = document.querySelector('.reveal');
-  const textEl = document.querySelector('.reveal__text');
-  const chipWrapEls = document.querySelectorAll('.rv-chip');
-  if (reveal && textEl) {
-    let chipMetrics = [];
-    let textWidth = 0;
-
-    const measure = () => {
-      const textRect = textEl.getBoundingClientRect();
-      textWidth = textRect.width;
-      chipMetrics = Array.from(chipWrapEls).map((wrap) => {
-        const r = wrap.getBoundingClientRect();
-        const img = wrap.querySelector('.rv-chip__img');
-        return { img, left: r.left - textRect.left, width: r.width };
-      });
-    };
+  const lineEls = document.querySelectorAll('.rv-line');
+  if (reveal && lineEls.length) {
+    const lines = Array.from(lineEls).map((el) => ({
+      el,
+      isImage: el.classList.contains('rv-line--image'),
+      img: el.querySelector('.rv-chip__img'),
+    }));
 
     let ticking = false;
     const updateReveal = () => {
@@ -79,19 +71,19 @@
       const scrollable = rect.height - window.innerHeight;
       const progress = scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 0;
 
-      textEl.style.backgroundPositionX = `${(1 - progress) * 100}%`;
-
-      const wipeX = progress * textWidth;
-      chipMetrics.forEach(({ img, left, width }) => {
-        const frac = width > 0 ? Math.min(1, Math.max(0, (wipeX - left) / width)) : 0;
-        img.style.width = `${frac * 100}%`;
+      const raw = progress * lines.length;
+      lines.forEach(({ el, isImage, img }, i) => {
+        const lineFrac = Math.min(1, Math.max(0, raw - i));
+        if (isImage) {
+          img.style.width = `${lineFrac * 100}%`;
+        } else {
+          el.style.backgroundPositionX = `${(1 - lineFrac) * 100}%`;
+        }
       });
       ticking = false;
     };
 
-    measure();
     updateReveal();
-
     window.addEventListener(
       'scroll',
       () => {
@@ -102,10 +94,7 @@
       },
       { passive: true }
     );
-    window.addEventListener('resize', () => {
-      measure();
-      updateReveal();
-    });
+    window.addEventListener('resize', updateReveal);
   }
 
   const nav = document.querySelector('.nav');
