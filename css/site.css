@@ -101,7 +101,7 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 /* ---------- reveal (full-bleed, 스크롤 연동 좌→우 와이프 채움) ---------- */
 .reveal{position:relative;height:240vh;}
 .reveal__sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden;}
-.reveal__text{font-size:clamp(24px,4vw,52px);line-height:1.6;font-weight:var(--fw-base);letter-spacing:var(--tracking-kr);
+.reveal__text{max-width:1600px;font-size:clamp(24px,4vw,52px);line-height:2.3;font-weight:var(--fw-base);letter-spacing:var(--tracking-kr);
   color:var(--color-primary-200);}
 @supports ((background-clip:text) or (-webkit-background-clip:text)){
   .reveal__text{
