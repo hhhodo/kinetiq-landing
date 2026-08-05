@@ -25,7 +25,7 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 .nav.is-scrolled{background:var(--color-canvas);border-bottom:var(--border-1);}
 
 /* ---------- hero (full-bleed — Figma 레퍼런스: 1920x720 비율, 스크림 없이 흑색 텍스트) ---------- */
-.hero{position:relative;overflow:hidden;aspect-ratio:1920/720;}
+.hero{position:relative;overflow:hidden;aspect-ratio:1920/960;}
 .hero__slides{position:absolute;inset:0;}
 .hero__slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;}
 .hero__slide.is-active{opacity:1;}
