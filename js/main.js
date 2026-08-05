@@ -7,29 +7,50 @@
     { title: '도시 전역, 언제나 가까운 스테이션', desc: '42개 도시에 촘촘히 놓인 KINETIQ 스테이션으로 이어지는 이동' },
   ];
   const slideEls = document.querySelectorAll('.hero__slide');
-  const barEls = document.querySelectorAll('.hero__pagination-bar');
+  const barEl = document.querySelector('.hero__pagination-bar');
+  const toggleEl = document.querySelector('.hero__pagination-toggle');
   const titleEl = document.querySelector('.hero__title');
   const descEl = document.querySelector('.hero__desc');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (slideEls.length && barEls.length && titleEl && descEl) {
+  if (slideEls.length && barEl && titleEl && descEl) {
     let index = 0;
+    let timer = null;
+
+    const restartBar = () => {
+      barEl.classList.remove('is-active');
+      void barEl.offsetWidth; // force reflow so the fill animation restarts
+      barEl.classList.add('is-active');
+    };
     const render = () => {
       slideEls.forEach((el, i) => el.classList.toggle('is-active', i === index));
-      barEls.forEach((el, i) => {
-        el.classList.remove('is-active', 'is-done');
-        if (i < index) el.classList.add('is-done');
-        if (i === index) el.classList.add('is-active');
-      });
       titleEl.textContent = slideContent[index].title;
       descEl.textContent = slideContent[index].desc;
+      restartBar();
     };
-    render();
-    if (!reduceMotion) {
-      setInterval(() => {
+    const startTimer = () => {
+      timer = setInterval(() => {
         index = (index + 1) % slideContent.length;
         render();
       }, SLIDE_DURATION);
+    };
+
+    render();
+    if (!reduceMotion) startTimer();
+
+    if (toggleEl) {
+      toggleEl.addEventListener('click', () => {
+        const willPause = !toggleEl.classList.contains('is-paused');
+        toggleEl.classList.toggle('is-paused', willPause);
+        toggleEl.setAttribute('aria-pressed', String(willPause));
+        toggleEl.setAttribute('aria-label', willPause ? '슬라이드 재생' : '슬라이드 정지');
+        barEl.classList.toggle('is-paused', willPause);
+        if (willPause) {
+          clearInterval(timer);
+        } else {
+          startTimer();
+        }
+      });
     }
   }
 
