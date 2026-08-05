@@ -55,7 +55,7 @@
   }
 
   // Reveal — 스크롤한 만큼 텍스트 전체 줄이 좌→우로 한번에 채워지고,
-  // 문장 중간 이미지 칩은 와이프가 그 위치를 지날 때 없다가 나타나듯 페이드인됨
+  // 문장 중간 이미지 칩도 같은 와이프가 그 위치를 지나는 동안 좌→우로 clip-path 채워짐
   const reveal = document.querySelector('.reveal');
   const textEl = document.querySelector('.reveal__text');
   const chipEls = document.querySelectorAll('.rv-chip__img');
@@ -83,7 +83,7 @@
       const wipeX = progress * textWidth;
       chipMetrics.forEach(({ img, left, width }) => {
         const frac = width > 0 ? Math.min(1, Math.max(0, (wipeX - left) / width)) : 0;
-        img.style.opacity = frac;
+        img.style.clipPath = `inset(0 ${(1 - frac) * 100}% 0 0)`;
       });
       ticking = false;
     };

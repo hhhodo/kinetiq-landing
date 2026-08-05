@@ -114,7 +114,7 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
   }
 }
 .rv-chip{display:inline-flex;vertical-align:middle;margin:0 var(--space-2);}
-.rv-chip__img{width:9em;height:2.2em;border-radius:var(--radius-circle);opacity:0;}
+.rv-chip__img{width:9em;height:2.2em;border-radius:var(--radius-circle);clip-path:inset(0 100% 0 0);}
 @media (max-width:768px){
   .reveal{height:280vh;}
   .rv-chip__img{width:6em;height:1.8em;}
