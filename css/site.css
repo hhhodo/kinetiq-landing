@@ -82,7 +82,7 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 
 /* ---------- intro (5-7, 오프셋 2단 매소너리) ---------- */
 .intro__grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--grid-gutter-lg);align-items:start;}
-.intro__copy{grid-column:1/6;min-width:0;}
+.intro__copy{grid-column:1/6;min-width:0;position:sticky;top:calc(88px + var(--space-8));align-self:start;}
 .intro__bar{display:block;width:8px;height:70px;background:var(--text-default);margin-block:var(--space-6);}
 .intro__tag{letter-spacing:var(--display-tracking);}
 .intro__gallery{grid-column:6/13;min-width:0;display:grid;grid-template-columns:repeat(2,1fr);gap:var(--grid-gutter-md);}
@@ -93,6 +93,7 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 .intro__item figcaption{margin-top:var(--space-3);font-size:var(--fs-badge);color:var(--text-subtle);}
 @media (max-width:1024px){
   .intro__copy,.intro__gallery{grid-column:1/13;}
+  .intro__copy{position:static;}
   .intro__gallery{margin-top:var(--space-8);}
 }
 @media (max-width:768px){
