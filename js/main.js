@@ -54,6 +54,32 @@
     }
   }
 
+  // Reveal — 스크롤한 만큼 .rv-w(단어/이미지 칩)를 순서대로 채움
+  const reveal = document.querySelector('.reveal');
+  const rvWords = document.querySelectorAll('.rv-w');
+  if (reveal && rvWords.length) {
+    let ticking = false;
+    const updateReveal = () => {
+      const rect = reveal.getBoundingClientRect();
+      const scrollable = rect.height - window.innerHeight;
+      const progress = scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 0;
+      const filledCount = Math.round(progress * rvWords.length);
+      rvWords.forEach((el, i) => el.classList.toggle('is-filled', i < filledCount));
+      ticking = false;
+    };
+    updateReveal();
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(updateReveal);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+  }
+
   const nav = document.querySelector('.nav');
   if (nav) {
     let ticking = false;

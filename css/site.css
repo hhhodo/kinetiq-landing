@@ -101,6 +101,20 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
   .intro__col--offset{margin-top:0;}
 }
 
+/* ---------- reveal (full-bleed, 스크롤 연동 텍스트/이미지 칩 채움) ---------- */
+.reveal{position:relative;height:240vh;}
+.reveal__sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden;}
+.reveal__text{font-size:clamp(24px,4vw,52px);line-height:1.6;font-weight:var(--fw-base);letter-spacing:var(--tracking-kr);}
+.rv-w{color:var(--color-primary-200);transition:color .3s ease;}
+.rv-w.is-filled{color:var(--text-default);}
+.rv-chip{display:inline-flex;vertical-align:middle;margin:0 var(--space-2);}
+.rv-chip__img{width:9em;height:2.2em;border-radius:var(--radius-circle);opacity:.3;transition:opacity .3s ease;}
+.rv-chip.is-filled .rv-chip__img{opacity:1;}
+@media (max-width:768px){
+  .reveal{height:280vh;}
+  .rv-chip__img{width:6em;height:1.8em;}
+}
+
 /* ---------- gallery (flush — 3-3-3-3, Lineup / Moments 공용) ---------- */
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--grid-gutter-md);}
 .gallery-card__photo{aspect-ratio:5/6;border-radius:0;}
