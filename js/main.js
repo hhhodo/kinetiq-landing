@@ -141,4 +141,26 @@
       { passive: true }
     );
   }
+
+  // Moments — 카드가 겹쳐 있다가 화면에 들어오면 5도씩 꺾이며 펼쳐짐
+  const momentsGrid = document.querySelector('.moments__grid');
+  if (momentsGrid) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      momentsGrid.classList.add('is-open');
+    } else {
+      const momentsObserver = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              momentsGrid.classList.add('is-open');
+              obs.disconnect();
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      momentsObserver.observe(momentsGrid);
+    }
+  }
 })();
