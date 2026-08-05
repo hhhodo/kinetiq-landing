@@ -114,9 +114,7 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
   }
 }
 .rv-chip{display:inline-flex;vertical-align:middle;margin:0 var(--space-2);}
-.rv-chip__img{width:9em;height:2.2em;border-radius:var(--radius-circle);
-  background-repeat:no-repeat;background-size:200% 100%;background-position:100% 0;
-  background-image:linear-gradient(90deg,var(--color-placeholder) 0%,var(--color-placeholder) 50%,var(--color-primary-100) 50%,var(--color-primary-100) 100%);}
+.rv-chip__img{width:9em;height:2.2em;border-radius:var(--radius-circle);opacity:0;}
 @media (max-width:768px){
   .reveal{height:280vh;}
   .rv-chip__img{width:6em;height:1.8em;}
