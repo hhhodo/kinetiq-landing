@@ -62,21 +62,26 @@
     let plainLines = [];
     let imageLines = [];
 
+    // 각 파트(앞글자/이미지/뒷글자)의 실제 글자 상자를 줄의 왼쪽 기준으로 재서,
+    // 하나의 연속된 좌→우 와이프 좌표(wipeX)가 순서대로 지나가도록 함
+    const partFrac = (wipeX, left, width) => (width > 0 ? Math.min(1, Math.max(0, (wipeX - left) / width)) : 0);
+
     const measure = () => {
       plainLines = Array.from(lineEls).filter((el) => !el.classList.contains('rv-line--image'));
       imageLines = Array.from(document.querySelectorAll('.rv-line--image')).map((el) => {
+        const beforeFill = el.querySelector('.rv-line__before .rv-fill');
+        const afterFill = el.querySelector('.rv-line__after .rv-fill');
         const img = el.querySelector('.rv-chip__img');
-        const before = el.querySelector('.rv-line__before');
-        const after = el.querySelector('.rv-line__after');
         const lineRect = el.getBoundingClientRect();
-        const chipRect = img.parentElement.getBoundingClientRect();
+        const rectOf = (node) => node.getBoundingClientRect();
+        const beforeRect = rectOf(beforeFill);
+        const chipRect = rectOf(img.parentElement);
+        const afterRect = rectOf(afterFill);
         return {
-          before,
-          after,
-          img,
-          chipLeft: chipRect.left - lineRect.left,
-          chipWidth: chipRect.width,
           lineWidth: lineRect.width,
+          before: { el: beforeFill, left: beforeRect.left - lineRect.left, width: beforeRect.width },
+          chip: { el: img, left: chipRect.left - lineRect.left, width: chipRect.width },
+          after: { el: afterFill, left: afterRect.left - lineRect.left, width: afterRect.width },
         };
       });
     };
@@ -90,13 +95,11 @@
       plainLines.forEach((el) => {
         el.style.backgroundPositionX = `${(1 - progress) * 100}%`;
       });
-      imageLines.forEach(({ before, after, img, chipLeft, chipWidth, lineWidth }) => {
-        const pos = `${(1 - progress) * 100}%`;
-        before.style.backgroundPositionX = pos;
-        after.style.backgroundPositionX = pos;
+      imageLines.forEach(({ lineWidth, before, chip, after }) => {
         const wipeX = progress * lineWidth;
-        const chipFrac = chipWidth > 0 ? Math.min(1, Math.max(0, (wipeX - chipLeft) / chipWidth)) : 0;
-        img.style.width = `${chipFrac * 100}%`;
+        before.el.style.backgroundPositionX = `${(1 - partFrac(wipeX, before.left, before.width)) * 100}%`;
+        chip.el.style.width = `${partFrac(wipeX, chip.left, chip.width) * 100}%`;
+        after.el.style.backgroundPositionX = `${(1 - partFrac(wipeX, after.left, after.width)) * 100}%`;
       });
       ticking = false;
     };
