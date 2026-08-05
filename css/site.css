@@ -113,11 +113,11 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
     background-image:linear-gradient(90deg,var(--text-default) 0%,var(--text-default) 50%,var(--color-primary-200) 50%,var(--color-primary-200) 100%);
   }
 }
-.rv-chip{display:inline-flex;vertical-align:middle;margin:0 var(--space-2);}
-.rv-chip__img{width:9em;height:2.2em;border-radius:var(--radius-circle);clip-path:inset(0 100% 0 0);}
+.rv-chip{display:inline-flex;align-items:center;vertical-align:middle;margin:0 var(--space-2);width:9em;height:2.2em;}
+.rv-chip__img{width:0;height:100%;border-radius:var(--radius-circle);}
 @media (max-width:768px){
   .reveal{height:280vh;}
-  .rv-chip__img{width:6em;height:1.8em;}
+  .rv-chip{width:6em;height:1.8em;}
 }
 
 /* ---------- gallery (flush — 3-3-3-3, Lineup / Moments 공용) ---------- */

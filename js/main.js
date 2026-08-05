@@ -55,10 +55,10 @@
   }
 
   // Reveal — 스크롤한 만큼 텍스트 전체 줄이 좌→우로 한번에 채워지고,
-  // 문장 중간 이미지 칩도 같은 와이프가 그 위치를 지나는 동안 좌→우로 clip-path 채워짐
+  // 문장 중간 이미지 칩도 같은 와이프가 지나는 동안 알약 모양 그대로(양끝 라운드 유지) 좌→우로 자라남
   const reveal = document.querySelector('.reveal');
   const textEl = document.querySelector('.reveal__text');
-  const chipEls = document.querySelectorAll('.rv-chip__img');
+  const chipWrapEls = document.querySelectorAll('.rv-chip');
   if (reveal && textEl) {
     let chipMetrics = [];
     let textWidth = 0;
@@ -66,8 +66,9 @@
     const measure = () => {
       const textRect = textEl.getBoundingClientRect();
       textWidth = textRect.width;
-      chipMetrics = Array.from(chipEls).map((img) => {
-        const r = img.getBoundingClientRect();
+      chipMetrics = Array.from(chipWrapEls).map((wrap) => {
+        const r = wrap.getBoundingClientRect();
+        const img = wrap.querySelector('.rv-chip__img');
         return { img, left: r.left - textRect.left, width: r.width };
       });
     };
@@ -83,7 +84,7 @@
       const wipeX = progress * textWidth;
       chipMetrics.forEach(({ img, left, width }) => {
         const frac = width > 0 ? Math.min(1, Math.max(0, (wipeX - left) / width)) : 0;
-        img.style.clipPath = `inset(0 ${(1 - frac) * 100}% 0 0)`;
+        img.style.width = `${frac * 100}%`;
       });
       ticking = false;
     };
