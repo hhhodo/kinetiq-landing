@@ -9,7 +9,7 @@
    ========================================================= */
 
 html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
-.wrap{width:100%;padding-inline:var(--gutter);}
+.wrap{width:100%;max-width:1920px;margin-inline:auto;padding-inline:var(--gutter);}
 
 /* ---------- nav ---------- */
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;background:transparent;
@@ -30,8 +30,8 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 .hero__slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;}
 .hero__slide.is-active{opacity:1;}
 .hero__bg{position:absolute;inset:0;width:100%;height:100%;border-radius:0;}
-.hero__copy{position:absolute;z-index:1;left:50%;top:41%;transform:translateX(-50%);
-  width:100%;max-width:var(--container-narrow);padding-inline:var(--space-5);}
+.hero__copy{position:absolute;z-index:1;left:0;right:0;top:41%;
+  width:100%;max-width:1920px;margin-inline:auto;padding-inline:var(--gutter);}
 .hero__pagination{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-5);}
 .hero__pagination-bar{position:relative;width:70px;height:3px;background:rgba(38,38,40,.18);overflow:hidden;flex:0 0 auto;}
 .hero__pagination-fill{position:absolute;inset:0;width:0%;background:var(--text-default);}
