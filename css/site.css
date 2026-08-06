@@ -116,13 +116,19 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 /* ---------- app (4-8, 라이더 앱 화면 + 기능 설명) ---------- */
 .app__grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--grid-gutter-lg);align-items:center;}
 .app__copy{grid-column:1/5;min-width:0;}
+.app__copy p{font-weight:var(--fw-base);}
 .app__text{margin-top:var(--space-5);color:var(--text-subtle);}
 .app__features{margin-top:var(--space-7);display:flex;flex-direction:column;gap:0;}
 .app__features li{display:flex;flex-direction:column;gap:var(--space-1);padding-block:var(--space-4);border-top:var(--border-1);}
-.app__feature-title{font-size:var(--fs-h3);font-weight:var(--fw-strong);}
+.app__feature-title{font-size:var(--fs-body-1);font-weight:var(--fw-strong);}
 .app__feature-desc{color:var(--text-subtle);}
 .app__media{grid-column:5/13;min-width:0;display:flex;justify-content:center;}
-.app__screen{width:100%;max-width:320px;border-radius:var(--radius-lg);}
+/* 배경 패널 + 은은한 글로우로 화면이 덩그러니 떠 있지 않게 무대(stage) 효과를 줌 */
+.app__frame{position:relative;width:100%;max-width:460px;display:flex;justify-content:center;align-items:center;
+  padding-block:var(--space-9);background:var(--color-primary-050);border-radius:var(--radius-lg);overflow:hidden;}
+.app__frame::before{content:"";position:absolute;width:65%;aspect-ratio:1/1;border-radius:var(--radius-circle);
+  background:radial-gradient(circle,var(--color-primary-200) 0%,transparent 72%);}
+.app__screen{position:relative;z-index:1;width:100%;max-width:280px;border-radius:var(--radius-lg);border:var(--border-1);}
 @media (max-width:1024px){
   .app__copy,.app__media{grid-column:1/13;}
   .app__media{margin-top:var(--space-8);}
