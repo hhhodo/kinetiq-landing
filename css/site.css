@@ -226,9 +226,9 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
   transition:background .2s ease,color .2s ease;}
 .statement__btn:hover{background:var(--text-default);color:var(--text-default-inverse);}
 @media (max-width:1024px){
-  .statement{align-items:flex-end;padding-top:var(--space-11);}
+  .statement{flex-direction:column;align-items:stretch;padding-block:var(--space-11);}
   .statement__copy{grid-column:1/13;text-align:left;}
-  .statement__media{position:static;grid-column:1/13;width:220px;margin-bottom:var(--space-6);}
+  .statement__media{position:static;width:220px;margin:0 var(--gutter) var(--space-6);}
 }
 
 /* ---------- footer (full-bleed, 최소 구성: 브랜드 + 소셜 + 저작권) ---------- */
