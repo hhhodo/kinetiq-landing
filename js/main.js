@@ -104,6 +104,24 @@
       ticking = false;
     };
 
+    // 각 줄을 뷰포트 폭에 거의 꽉 차게(줄마다 글자 수가 달라도) 폰트 크기를 개별 보정
+    const fitRevealLines = () => {
+      const linesWrap = document.querySelector('.reveal .rv-lines');
+      if (!linesWrap) return;
+      const cs = getComputedStyle(linesWrap);
+      const availWidth = linesWrap.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      lineEls.forEach((el) => {
+        el.style.fontSize = '';
+        const naturalWidth = el.scrollWidth;
+        if (naturalWidth > 0 && availWidth > 0) {
+          const base = parseFloat(getComputedStyle(el).fontSize);
+          const scale = (availWidth * 0.98) / naturalWidth;
+          el.style.fontSize = `${base * scale}px`;
+        }
+      });
+    };
+
+    fitRevealLines();
     measure();
     updateReveal();
     window.addEventListener(
@@ -117,6 +135,7 @@
       { passive: true }
     );
     window.addEventListener('resize', () => {
+      fitRevealLines();
       measure();
       updateReveal();
     });
