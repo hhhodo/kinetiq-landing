@@ -1,6 +1,6 @@
 // KINETIQ landing — nav scroll state, hero 자동 슬라이드 전환 (마퀴는 CSS 애니메이션으로만 동작)
 (function () {
-  const SLIDE_DURATION = 5000;
+  const SLIDE_DURATION = 2500;
   const slideContent = [
     { title: '도시의 속도를, 새롭게 정의하다.', desc: '전동킥보드로 잇는 가장 빠른 라스트마일, KINETIQ' },
     { title: '탈 때마다, 더 가벼운 이동', desc: '가벼운 배터리와 접이식 디자인의 KINETIQ 전동킥보드' },

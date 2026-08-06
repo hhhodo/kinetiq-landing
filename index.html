@@ -33,6 +33,7 @@ Nav       — full-bleed
 Hero      — full-bleed
 Marquee   — full-bleed (대형 워드마크 배너)
 Intro     — 5-7 (오프셋 2단 매소너리)
+App       — 4-8 (앱 화면 + 기능 설명)
 Lineup    — flush — 3-3-3-3
 Moments   — flush — 3-3-3-3
 Statement — full-bleed — 6-6 (우측 정렬, 문의하기 버튼)
@@ -45,6 +46,7 @@ Footer    — full-bleed — 4-4-4
       <a href="#top" class="nav__mark">KINETIQ</a>
       <nav class="nav__links">
         <a href="#intro">소개</a>
+        <a href="#app">앱</a>
         <a href="#lineup">라인업</a>
         <a href="#moments">모먼츠</a>
         <a href="#statement">문의하기</a>
@@ -101,7 +103,6 @@ Footer    — full-bleed — 4-4-4
         <div class="intro__gallery">
           <div class="intro__col">
             <figure class="intro__item"><img class="intro__photo img--2-3" src="assets/images/markus-spiske-BeXrYCaS3Zg-unsplash.jpg" alt=""><figcaption>도심 킥보드 스테이션</figcaption></figure>
-            <figure class="intro__item"><img class="intro__photo img--9-16" src="assets/images/kinetiq-app-screen.png" alt=""><figcaption>KINETIQ 라이더 앱</figcaption></figure>
             <figure class="intro__item"><img class="intro__photo img--4-3" src="assets/images/photo-1644710840157-b0e99bfa734d.avif" alt=""><figcaption>야간 안전 테일라이트</figcaption></figure>
           </div>
           <div class="intro__col intro__col--offset">
@@ -114,25 +115,46 @@ Footer    — full-bleed — 4-4-4
     </div>
   </section>
 
+  <!-- App — 4-8 (앱 화면 + 기능 설명) -->
+  <section class="app section" id="app">
+    <div class="wrap">
+      <div class="app__grid">
+        <div class="app__copy">
+          <p class="h1">KINETIQ 라이더 앱</p>
+          <p class="body-1 measure app__text">킥보드를 찾고, 잠금을 풀고, 라이딩을 마치는 순간까지 — 앱 하나로 이어집니다.</p>
+          <ul class="app__features">
+            <li><span class="app__feature-title">실시간 위치 확인</span><span class="app__feature-desc">지도에서 가장 가까운 킥보드를 바로 찾습니다.</span></li>
+            <li><span class="app__feature-title">QR 잠금 해제</span><span class="app__feature-desc">스캔 한 번으로 라이딩을 시작합니다.</span></li>
+            <li><span class="app__feature-title">잔여 배터리 표시</span><span class="app__feature-desc">완주 가능 거리를 미리 확인합니다.</span></li>
+            <li><span class="app__feature-title">간편 결제</span><span class="app__feature-desc">라이딩이 끝나면 자동으로 결제됩니다.</span></li>
+          </ul>
+        </div>
+        <div class="app__media">
+          <img class="app__screen" src="assets/images/kinetiq-app-screen.png" alt="KINETIQ 라이더 앱 화면">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Reveal — full-bleed (이미지·글·이미지·글·이미지 5줄, 모두 동시에 좌→우 채움) -->
   <section class="reveal">
     <div class="reveal__sticky">
       <div class="wrap rv-lines">
         <p class="rv-line rv-line--image">
           <span class="rv-line__before"><span class="rv-fill">도시의 이동은</span></span>
-          <span class="rv-chip"><span class="rv-chip__grow"><img class="rv-chip__img" src="assets/images/antonio-sokic-VieCBZ_9bOU-unsplash.jpg" alt=""></span></span>
+          <span class="rv-chip"><span class="rv-chip__grow"><img class="rv-chip__img rv-chip__img--head" src="assets/images/antonio-sokic-VieCBZ_9bOU-unsplash.jpg" alt="킥보드 손잡이"></span></span>
           <span class="rv-line__after"><span class="rv-fill">가벼워집니다.</span></span>
         </p>
         <p class="rv-line">짧은 거리마다 새로운 선택이 생기고,</p>
         <p class="rv-line rv-line--image">
           <span class="rv-line__before"><span class="rv-fill">걷기엔 멀지만</span></span>
-          <span class="rv-chip"><span class="rv-chip__grow"><img class="rv-chip__img" src="assets/images/martin-katler-r9gEejXAU3Y-unsplash.jpg" alt=""></span></span>
+          <span class="rv-chip"><span class="rv-chip__grow"><img class="rv-chip__img rv-chip__img--body" src="assets/images/antonio-sokic-VieCBZ_9bOU-unsplash.jpg" alt="킥보드 몸통"></span></span>
           <span class="rv-line__after"><span class="rv-fill">타기엔 가깝죠.</span></span>
         </p>
         <p class="rv-line">그 틈을 KINETIQ가 채웁니다,</p>
         <p class="rv-line rv-line--image">
           <span class="rv-line__before"><span class="rv-fill">하나의 흐름</span></span>
-          <span class="rv-chip"><span class="rv-chip__grow"><img class="rv-chip__img" src="assets/images/kumas_taverne-MIlWYGQhxJU-unsplash.jpg" alt=""></span></span>
+          <span class="rv-chip"><span class="rv-chip__grow"><img class="rv-chip__img rv-chip__img--wheel" src="assets/images/antonio-sokic-VieCBZ_9bOU-unsplash.jpg" alt="킥보드 바퀴"></span></span>
           <span class="rv-line__after"><span class="rv-fill">이어집니다.</span></span>
         </p>
       </div>
@@ -191,9 +213,9 @@ Footer    — full-bleed — 4-4-4
           <span class="footer__mark-caption">RIDE WITH THE CITY</span>
         </div>
         <div class="footer__social">
-          <a href="#" aria-label="Instagram">IG</a>
-          <a href="#" aria-label="YouTube">YT</a>
-          <a href="#" aria-label="X">X</a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.5 9.5L15 12l-4.5 2.5z" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
         </div>
       </div>
     </div>

@@ -16,18 +16,21 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
   border-bottom:1px solid transparent;transition:background .25s ease,border-color .25s ease;}
 .nav__row{display:flex;align-items:center;justify-content:space-between;min-height:88px;gap:var(--space-5);}
 .nav__mark{font-size:var(--fs-h3);font-weight:var(--fw-strong);letter-spacing:var(--display-tracking);
-  color:var(--text-default);transition:color .25s ease;flex:0 0 auto;}
+  color:var(--text-default-inverse);transition:color .25s ease;flex:0 0 auto;}
 .nav__links{display:flex;align-items:center;gap:var(--space-6);overflow-x:auto;scrollbar-width:none;}
 .nav__links::-webkit-scrollbar{display:none;}
 .nav__links a{font-size:var(--fs-body-2);font-weight:var(--fw-base);white-space:nowrap;
-  color:var(--text-subtle);transition:color .25s ease;}
-.nav__links a:hover{color:var(--text-default);}
+  color:rgba(255,255,255,.82);transition:color .25s ease;}
+.nav__links a:hover{color:var(--text-default-inverse);}
 .nav.is-scrolled{background:var(--color-canvas);border-bottom:var(--border-1);}
+.nav.is-scrolled .nav__mark{color:var(--text-default);}
+.nav.is-scrolled .nav__links a{color:var(--text-subtle);}
+.nav.is-scrolled .nav__links a:hover{color:var(--text-default);}
 
 /* ---------- hero (full-bleed — Figma 레퍼런스: 1920x720 비율, 스크림 없이 흑색 텍스트) ---------- */
 .hero{position:relative;overflow:hidden;aspect-ratio:1920/960;}
 .hero__slides{position:absolute;inset:0;}
-.hero__slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;}
+.hero__slide{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;}
 .hero__slide.is-active{opacity:1;}
 .hero__bg{position:absolute;inset:0;width:100%;height:100%;border-radius:0;object-fit:cover;}
 .hero__dim{position:absolute;inset:0;z-index:1;
@@ -43,7 +46,7 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 .hero__pagination{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-5);}
 .hero__pagination-bar{position:relative;width:70px;height:3px;background:rgba(38,38,40,.18);overflow:hidden;flex:0 0 auto;}
 .hero__pagination-fill{position:absolute;inset:0;width:0%;background:var(--text-default);}
-.hero__pagination-bar.is-active .hero__pagination-fill{animation:hero-pagination 5s linear forwards;}
+.hero__pagination-bar.is-active .hero__pagination-fill{animation:hero-pagination 2.5s linear forwards;}
 .hero__pagination-bar.is-paused .hero__pagination-fill{animation-play-state:paused;}
 @keyframes hero-pagination{from{width:0%;}to{width:100%;}}
 .hero__pagination-toggle{display:flex;align-items:center;justify-content:center;width:20px;height:20px;
@@ -110,6 +113,21 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
   .intro__col--offset{margin-top:0;}
 }
 
+/* ---------- app (4-8, 라이더 앱 화면 + 기능 설명) ---------- */
+.app__grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--grid-gutter-lg);align-items:center;}
+.app__copy{grid-column:1/5;min-width:0;}
+.app__text{margin-top:var(--space-5);color:var(--text-subtle);}
+.app__features{margin-top:var(--space-7);display:flex;flex-direction:column;gap:0;}
+.app__features li{display:flex;flex-direction:column;gap:var(--space-1);padding-block:var(--space-4);border-top:var(--border-1);}
+.app__feature-title{font-size:var(--fs-h3);font-weight:var(--fw-strong);}
+.app__feature-desc{color:var(--text-subtle);}
+.app__media{grid-column:5/13;min-width:0;display:flex;justify-content:center;}
+.app__screen{width:100%;max-width:320px;border-radius:var(--radius-lg);}
+@media (max-width:1024px){
+  .app__copy,.app__media{grid-column:1/13;}
+  .app__media{margin-top:var(--space-8);}
+}
+
 /* ---------- reveal (full-bleed, 이미지·글·이미지·글·이미지 5줄, 모두 동시에 좌→우 채움) ---------- */
 .reveal{position:relative;height:280vh;}
 .reveal__sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden;}
@@ -140,6 +158,10 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 .rv-chip{position:relative;display:inline-flex;align-items:center;vertical-align:middle;width:6em;height:1.6em;flex:0 0 auto;}
 .rv-chip__grow{position:absolute;left:0;top:0;width:0;height:100%;overflow:hidden;border-radius:var(--radius-circle);}
 .rv-chip__img{display:block;width:6em;height:100%;max-width:none;object-fit:cover;}
+/* 킥보드 한 장을 손잡이/몸통/바퀴 세 부분으로 나눠 보여줌 */
+.rv-chip__img--head{object-position:center 16%;}
+.rv-chip__img--body{object-position:center 48%;}
+.rv-chip__img--wheel{object-position:center 88%;}
 @media (max-width:1024px){
   .rv-line--image{white-space:normal;}
 }
@@ -204,7 +226,8 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
   color:var(--text-subtle-inverse);text-transform:uppercase;}
 .footer__social{display:flex;gap:var(--space-3);}
 .footer__social a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;
-  border-radius:var(--radius-circle);border:1px solid var(--color-primary-700);font-size:var(--fs-badge);}
+  border-radius:var(--radius-circle);border:1px solid var(--color-primary-700);color:var(--text-default-inverse);}
+.footer__social svg{width:18px;height:18px;}
 .footer__bottom{padding-top:var(--space-6);}
 .footer__copyright{font-size:var(--fs-badge);color:var(--text-subtle-inverse);}
 
