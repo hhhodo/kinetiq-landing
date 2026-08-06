@@ -97,6 +97,9 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 .intro__col--offset{margin-top:var(--space-9);}
 .intro__item{width:100%;display:flex;flex-direction:column;}
 .intro__photo{display:block;width:100%;object-fit:cover;border-radius:var(--radius-md);}
+/* 세로(portrait) 원본 사진이 잘리지 않도록 더 높은 비율 추가 */
+.img--2-3{aspect-ratio:2/3;}
+.img--9-16{aspect-ratio:9/16;}
 .intro__item figcaption{margin-top:var(--space-3);font-size:var(--fs-body-1);color:var(--text-subtle);}
 @media (max-width:1024px){
   .intro__copy,.intro__gallery{grid-column:1/13;}
