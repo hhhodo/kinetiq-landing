@@ -122,16 +122,18 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 .app__features li{display:flex;flex-direction:column;gap:var(--space-1);padding-block:var(--space-4);border-top:var(--border-1);}
 .app__feature-title{font-size:var(--fs-body-1);font-weight:var(--fw-strong);}
 .app__feature-desc{color:var(--text-subtle);}
-.app__media{grid-column:5/13;min-width:0;display:flex;justify-content:center;}
-/* 배경 패널 + 은은한 글로우로 화면이 덩그러니 떠 있지 않게 무대(stage) 효과를 줌 */
-.app__frame{position:relative;width:100%;display:flex;justify-content:center;align-items:center;
+.app__media{grid-column:5/13;min-width:0;display:flex;justify-content:flex-end;}
+/* 배경 패널 + 은은한 글로우로 화면이 덩그러니 떠 있지 않게 무대(stage) 효과를 줌.
+   우측 끝은 그리드 경계에 맞추고, 좌측을 100px 줄여서 텍스트와의 여백을 확보 */
+.app__frame{position:relative;width:calc(100% - 100px);display:flex;justify-content:center;align-items:center;
   padding-block:var(--space-9);background:var(--color-primary-050);border-radius:var(--radius-lg);overflow:hidden;}
 .app__frame::before{content:"";position:absolute;width:min(60%,380px);aspect-ratio:1/1;border-radius:var(--radius-circle);
   background:radial-gradient(circle,var(--color-primary-200) 0%,transparent 72%);}
 .app__screen{position:relative;z-index:1;width:100%;max-width:280px;border-radius:var(--radius-lg);border:var(--border-1);}
 @media (max-width:1024px){
   .app__copy,.app__media{grid-column:1/13;}
-  .app__media{margin-top:var(--space-8);}
+  .app__media{margin-top:var(--space-8);justify-content:center;}
+  .app__frame{width:100%;}
 }
 
 /* ---------- reveal (full-bleed, 이미지·글·이미지·글·이미지 5줄, 모두 동시에 좌→우 채움) ---------- */
@@ -211,7 +213,10 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 .statement{position:relative;overflow:hidden;min-height:70vh;display:flex;align-items:center;
   background:var(--color-canvas);}
 .statement__bg{position:absolute;inset:0;top:auto;height:18%;width:100%;object-fit:cover;opacity:.6;}
-.statement__grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(12,1fr);gap:var(--grid-gutter-lg);}
+.statement__grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(12,1fr);gap:var(--grid-gutter-lg);align-items:center;}
+.statement__media{grid-column:1/7;min-width:0;overflow:hidden;border-radius:var(--radius-lg);
+  aspect-ratio:704/1015;}
+.statement__phone{display:block;width:100%;border-radius:var(--radius-lg);}
 .statement__copy{grid-column:7/13;min-width:0;text-align:right;}
 .statement__line{font-weight:var(--fw-base);line-height:1.15;letter-spacing:var(--display-tracking);}
 .statement__btn{display:inline-flex;align-items:center;justify-content:center;margin-top:var(--space-7);
@@ -220,7 +225,8 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
   transition:background .2s ease,color .2s ease;}
 .statement__btn:hover{background:var(--text-default);color:var(--text-default-inverse);}
 @media (max-width:768px){
-  .statement__copy{grid-column:1/13;text-align:left;}
+  .statement__media,.statement__copy{grid-column:1/13;text-align:left;}
+  .statement__media{margin-bottom:var(--space-7);max-width:280px;}
 }
 
 /* ---------- footer (full-bleed, 최소 구성: 브랜드 + 소셜 + 저작권) ---------- */
