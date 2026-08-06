@@ -195,29 +195,18 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
   .statement__copy{grid-column:1/13;text-align:left;}
 }
 
-/* ---------- footer (full-bleed — 4-4-4) ---------- */
+/* ---------- footer (full-bleed, 최소 구성: 브랜드 + 소셜 + 저작권) ---------- */
 .footer{background:var(--color-primary-900);color:var(--text-default-inverse);padding-block:var(--space-11);}
-.footer__row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-8);
-  padding-bottom:var(--space-8);border-bottom:1px solid var(--color-primary-700);}
-.footer__col-title{display:block;font-size:var(--fs-h2);font-weight:var(--fw-base);
-  padding-bottom:var(--space-5);border-bottom:2px solid var(--text-default-inverse);margin-bottom:var(--space-5);}
-.footer__col-links{display:flex;flex-direction:column;gap:var(--space-3);}
-.footer__col-links a{font-size:var(--fs-badge);color:var(--text-subtle-inverse);}
-.footer__col--brand{display:flex;flex-direction:column;}
-.footer__social{display:flex;gap:var(--space-3);margin-bottom:var(--space-8);}
-.footer__social a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;
-  border-radius:var(--radius-circle);border:1px solid var(--color-primary-700);font-size:var(--fs-badge);}
-.footer__mark-row{margin-top:auto;}
+.footer__row{padding-bottom:var(--space-8);border-bottom:1px solid var(--color-primary-700);}
+.footer__col--brand{display:flex;flex-direction:column;gap:var(--space-6);}
 .footer__mark{display:block;font-size:var(--fs-h1);font-weight:var(--fw-strong);}
 .footer__mark-caption{display:block;margin-top:var(--space-2);font-size:var(--fs-badge);
   color:var(--text-subtle-inverse);text-transform:uppercase;}
-.footer__bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-4);padding-top:var(--space-6);}
-.footer__legal{display:flex;gap:var(--space-5);}
-.footer__legal a{font-size:var(--fs-badge);color:var(--text-subtle-inverse);}
+.footer__social{display:flex;gap:var(--space-3);}
+.footer__social a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;
+  border-radius:var(--radius-circle);border:1px solid var(--color-primary-700);font-size:var(--fs-badge);}
+.footer__bottom{padding-top:var(--space-6);}
 .footer__copyright{font-size:var(--fs-badge);color:var(--text-subtle-inverse);}
-@media (max-width:1024px){
-  .footer__row{grid-template-columns:1fr;gap:var(--space-8);}
-}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
