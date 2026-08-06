@@ -155,7 +155,9 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 @media (max-width:1024px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:768px){.gallery-grid{grid-template-columns:1fr;}}
 
-/* ---------- moments (스크롤한 만큼 카드가 겹친 상태에서 5도씩 각도가 풀리며 펼쳐짐) ---------- */
+/* ---------- moments (스크롤 중 화면을 고정하고, 스크롤한 만큼 카드가 겹친 상태에서 5도씩 각도가 풀리며 펼쳐짐) ---------- */
+.moments{position:relative;height:220vh;}
+.moments__sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden;}
 .moments__grid{--p:0;}
 .moments__grid .gallery-card{
   transform:translateX(calc(var(--card-x,0%) * (1 - var(--p)))) rotate(calc(var(--card-r,0deg) * (1 - var(--p))));
