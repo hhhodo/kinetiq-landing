@@ -124,9 +124,9 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 .app__feature-desc{color:var(--text-subtle);}
 .app__media{grid-column:5/13;min-width:0;display:flex;justify-content:center;}
 /* 배경 패널 + 은은한 글로우로 화면이 덩그러니 떠 있지 않게 무대(stage) 효과를 줌 */
-.app__frame{position:relative;width:100%;max-width:460px;display:flex;justify-content:center;align-items:center;
+.app__frame{position:relative;width:100%;display:flex;justify-content:center;align-items:center;
   padding-block:var(--space-9);background:var(--color-primary-050);border-radius:var(--radius-lg);overflow:hidden;}
-.app__frame::before{content:"";position:absolute;width:65%;aspect-ratio:1/1;border-radius:var(--radius-circle);
+.app__frame::before{content:"";position:absolute;width:min(60%,380px);aspect-ratio:1/1;border-radius:var(--radius-circle);
   background:radial-gradient(circle,var(--color-primary-200) 0%,transparent 72%);}
 .app__screen{position:relative;z-index:1;width:100%;max-width:280px;border-radius:var(--radius-lg);border:var(--border-1);}
 @media (max-width:1024px){
