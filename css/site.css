@@ -13,7 +13,7 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 
 /* ---------- nav ---------- */
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;background:transparent;
-  border-bottom:1px solid transparent;transition:background .25s ease,border-color .25s ease;}
+  border-bottom:1px solid transparent;transition:background .15s ease,border-color .15s ease;}
 .nav__row{display:flex;align-items:center;justify-content:space-between;min-height:88px;gap:var(--space-5);}
 .nav__mark{font-size:var(--fs-h3);font-weight:var(--fw-strong);letter-spacing:var(--display-tracking);
   color:var(--text-default-inverse);transition:color .25s ease;flex:0 0 auto;}
@@ -210,7 +210,7 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 }
 
 /* ---------- statement (full-bleed — 6-6, 우측 정렬 스테이트먼트 + 문의하기) ---------- */
-.statement{position:relative;overflow:hidden;min-height:70vh;display:flex;align-items:center;
+.statement{position:relative;overflow:hidden;min-height:60vh;display:flex;align-items:center;
   background:var(--color-canvas);}
 .statement__bg{position:absolute;inset:0;top:auto;height:18%;width:100%;object-fit:cover;opacity:.6;}
 .statement__grid{position:relative;z-index:1;width:100%;display:grid;grid-template-columns:repeat(12,1fr);gap:var(--grid-gutter-lg);align-items:center;}
