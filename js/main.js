@@ -2,9 +2,9 @@
 (function () {
   const SLIDE_DURATION = 5000;
   const slideContent = [
-    { title: '도시의 속도를, 새롭게 정의하다.', desc: '전기 마이크로모빌리티로 라스트마일을 잇는 스마트 모빌리티 플랫폼' },
-    { title: '탈 때마다, 더 가벼운 이동', desc: '가벼운 배터리와 손쉬운 대여로 완성하는 도심형 전기 스쿠터' },
-    { title: '도시 전역, 언제나 가까운 스테이션', desc: '42개 도시에 촘촘히 놓인 KINETIQ 스테이션으로 이어지는 이동' },
+    { title: '도시의 속도를, 새롭게 정의하다.', desc: '전동킥보드로 잇는 가장 빠른 라스트마일, KINETIQ' },
+    { title: '탈 때마다, 더 가벼운 이동', desc: '가벼운 배터리와 접이식 디자인의 KINETIQ 전동킥보드' },
+    { title: '도시 전역, 언제나 가까운 스테이션', desc: '42개 도시 곳곳의 KINETIQ 킥보드 스테이션' },
   ];
   const slideEls = document.querySelectorAll('.hero__slide');
   const barEl = document.querySelector('.hero__pagination-bar');
@@ -152,10 +152,12 @@
       momentsGrid.style.setProperty('--p', 1);
     } else {
       let ticking = false;
+      const UNFOLD_PORTION = 0.55; // 고정 구간의 앞 55%에서 펼침을 끝내고, 남은 45%는 펼쳐진 채로 멈춰있다가 스크롤이 풀림
       const updateMoments = () => {
         const rect = moments.getBoundingClientRect();
         const scrollable = rect.height - window.innerHeight;
-        const progress = scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 0;
+        const raw = scrollable > 0 ? -rect.top / (scrollable * UNFOLD_PORTION) : 0;
+        const progress = Math.min(1, Math.max(0, raw));
         momentsGrid.style.setProperty('--p', progress);
         ticking = false;
       };
