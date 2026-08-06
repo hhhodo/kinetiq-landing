@@ -215,7 +215,7 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 .statement__bg{position:absolute;inset:0;top:auto;height:18%;width:100%;object-fit:cover;opacity:.6;}
 .statement__grid{position:relative;z-index:1;width:100%;display:grid;grid-template-columns:repeat(12,1fr);gap:var(--grid-gutter-lg);align-items:center;}
 /* 텍스트는 원래대로 섹션 중앙에 두고, 이미지만 섹션 하단에 고정(그리드 흐름과 분리) */
-.statement__media{position:absolute;left:calc(var(--gutter) + 200px);bottom:0;width:320px;overflow:hidden;
+.statement__media{position:absolute;left:calc(var(--gutter) + 500px);bottom:0;width:320px;overflow:hidden;
   border-radius:var(--radius-lg) var(--radius-lg) 0 0;aspect-ratio:704/1015;}
 .statement__phone{display:block;width:100%;border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
 .statement__copy{grid-column:7/13;min-width:0;text-align:right;}
