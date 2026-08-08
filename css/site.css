@@ -8,7 +8,8 @@
    문의하기 버튼 외 버튼 요소 없음(내비게이션 링크·소셜은 텍스트/앵커).
    ========================================================= */
 
-html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
+html,body{overflow-x:hidden;max-width:100vw;}
+html{scroll-behavior:smooth;scroll-padding-top:88px;}
 .wrap{width:100%;max-width:1920px;margin-inline:auto;padding-inline:var(--gutter);}
 
 /* ---------- nav ---------- */
