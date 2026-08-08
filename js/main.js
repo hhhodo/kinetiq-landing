@@ -86,10 +86,22 @@
       });
     };
 
+    // 모바일에서는 스크롤 중 주소창이 접히고 펴지면서 window.innerHeight(=100vh)가
+    // 실시간으로 바뀌는데, .reveal 높이(CSS의 vh)와 여기서 쓰는 scrollable 계산이
+    // 그 순간의 innerHeight를 각각 따로 참조하면 서로 어긋나서 애니메이션이 스크롤이
+    // 끝나기 전에 이미 다 채워지거나(혹은 다 채워지기 전에 핀이 풀림) 하는 문제가
+    // 생김. 그래서 뷰포트 높이를 한 번 캐싱해 컨테이너 실제 높이(px)로 못박아두고,
+    // scrollable 계산도 항상 같은 값을 쓰게 해서 절대 어긋나지 않게 함.
+    let cachedVH = window.innerHeight;
+    let cachedWidth = window.innerWidth;
+    const revealMultiplier = () => (window.matchMedia('(max-width:768px)').matches ? 3.2 : 2.8);
+    const applyRevealHeight = () => { reveal.style.height = `${cachedVH * revealMultiplier()}px`; };
+    applyRevealHeight();
+
     let ticking = false;
     const updateReveal = () => {
       const rect = reveal.getBoundingClientRect();
-      const scrollable = rect.height - window.innerHeight;
+      const scrollable = rect.height - cachedVH;
       const progress = scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 0;
 
       plainLines.forEach((el) => {
@@ -104,26 +116,31 @@
       ticking = false;
     };
 
-    // 각 줄을 뷰포트 폭에 거의 꽉 차게(줄마다 글자 수가 달라도) 폰트 크기를 개별 보정
+    // 줄마다 다른 글자수 때문에 폰트 크기가 제각각으로 보이지 않도록, 가장 긴 줄이
+    // 폭에 맞춰지는 데 필요한 배율 하나만 구해서 모든 줄에 동일하게 적용한다
+    // (가장 긴 줄만 폭을 거의 채우고, 짧은 줄들은 같은 크기로 더 좁게 표시됨)
     const fitRevealLines = () => {
       const linesWrap = document.querySelector('.reveal .rv-lines');
       if (!linesWrap) return;
       const cs = getComputedStyle(linesWrap);
       const availWidth = linesWrap.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      lineEls.forEach((el) => { el.style.fontSize = ''; });
+      let minScale = 1;
+      let base = 0;
       lineEls.forEach((el) => {
-        el.style.fontSize = '';
         // 줄바꿈된 상태에서는 scrollWidth가 실제 한 줄 너비를 반영하지 못하므로
         // 측정 중엔 강제로 nowrap을 걸어 진짜 한 줄 너비를 잰다
         const prevWhiteSpace = el.style.whiteSpace;
         el.style.whiteSpace = 'nowrap';
         const naturalWidth = el.scrollWidth;
         el.style.whiteSpace = prevWhiteSpace;
+        base = parseFloat(getComputedStyle(el).fontSize);
         if (naturalWidth > 0 && availWidth > 0) {
-          const base = parseFloat(getComputedStyle(el).fontSize);
           const scale = (availWidth * 0.98) / naturalWidth;
-          el.style.fontSize = `${base * scale}px`;
+          if (scale < minScale) minScale = scale;
         }
       });
+      lineEls.forEach((el) => { el.style.fontSize = `${base * minScale}px`; });
     };
 
     fitRevealLines();
@@ -140,6 +157,13 @@
       { passive: true }
     );
     window.addEventListener('resize', () => {
+      // 주소창 접힘/펼침으로 인한 세로 폭 변화는 무시하고, 실제 회전/리사이즈(가로 폭
+      // 변화)일 때만 캐시된 뷰포트 높이를 다시 잡아 애니메이션 길이를 재계산한다
+      if (window.innerWidth !== cachedWidth) {
+        cachedWidth = window.innerWidth;
+        cachedVH = window.innerHeight;
+        applyRevealHeight();
+      }
       fitRevealLines();
       measure();
       updateReveal();
