@@ -8,8 +8,12 @@
    문의하기 버튼 외 버튼 요소 없음(내비게이션 링크·소셜은 텍스트/앵커).
    ========================================================= */
 
-html,body{overflow-x:hidden;max-width:100vw;}
-html{scroll-behavior:smooth;scroll-padding-top:88px;}
+/* body에 overflow-x를 걸면(overflow-y를 visible로 같이 써도) 스펙상 overflow-y가
+   auto로 승격되면서 body가 자체 스크롤 컨테이너가 되어버리는데, 실제로는 body가
+   스크롤되는 게 아니라 문서(html)가 스크롤되기 때문에 그 안의 position:sticky
+   핀 섹션(Reveal/Moments)이 전부 먹통이 됨. html은 뷰포트로 특별히 전파되는
+   요소라 같은 문제가 없으므로 overflow-x는 html에만 건다. */
+html{overflow-x:hidden;max-width:100vw;scroll-behavior:smooth;scroll-padding-top:88px;}
 .wrap{width:100%;max-width:1920px;margin-inline:auto;padding-inline:var(--gutter);}
 
 /* ---------- nav ---------- */
