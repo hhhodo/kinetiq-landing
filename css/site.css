@@ -141,7 +141,7 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 .reveal__sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden;}
 .rv-lines{display:flex;flex-direction:column;align-items:center;gap:var(--space-5);text-align:center;width:100%;}
 .rv-line{width:100%;max-width:1800px;font-size:clamp(30px,6.2vw,100px);line-height:1.4;font-weight:var(--fw-base);
-  letter-spacing:var(--tracking-kr);color:var(--color-primary-200);}
+  letter-spacing:var(--tracking-kr);color:var(--color-primary-200);white-space:nowrap;}
 @supports ((background-clip:text) or (-webkit-background-clip:text)){
   .rv-line{
     color:transparent;background-repeat:no-repeat;background-size:200% 100%;background-position:100% 0;
@@ -152,7 +152,7 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 /* 이미지 줄: 앞/뒤 텍스트에 동일한 flex-grow를 줘서 칩이 항상 줄의 정확한 중앙에 오도록 함 */
 .rv-line--image{display:flex;align-items:center;flex-wrap:nowrap;max-width:2200px;white-space:nowrap;
   color:initial;background:none;-webkit-background-clip:initial;background-clip:initial;}
-.rv-line__before,.rv-line__after{flex:1 1 0;}
+.rv-line__before,.rv-line__after{flex:1 1 0;white-space:nowrap;}
 .rv-line__before{text-align:right;padding-right:var(--space-3);}
 .rv-line__after{text-align:left;padding-left:var(--space-3);}
 .rv-fill{color:var(--color-primary-200);}
@@ -170,9 +170,6 @@ html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-top:88px;}
 .rv-chip__img--head{object-position:center 16%;}
 .rv-chip__img--body{object-position:center 48%;}
 .rv-chip__img--wheel{object-position:center 88%;}
-@media (max-width:1024px){
-  .rv-line--image{white-space:normal;}
-}
 @media (max-width:768px){
   .reveal{height:320vh;}
   .rv-chip{width:5em;height:1.4em;}

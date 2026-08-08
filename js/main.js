@@ -112,7 +112,12 @@
       const availWidth = linesWrap.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
       lineEls.forEach((el) => {
         el.style.fontSize = '';
+        // 줄바꿈된 상태에서는 scrollWidth가 실제 한 줄 너비를 반영하지 못하므로
+        // 측정 중엔 강제로 nowrap을 걸어 진짜 한 줄 너비를 잰다
+        const prevWhiteSpace = el.style.whiteSpace;
+        el.style.whiteSpace = 'nowrap';
         const naturalWidth = el.scrollWidth;
+        el.style.whiteSpace = prevWhiteSpace;
         if (naturalWidth > 0 && availWidth > 0) {
           const base = parseFloat(getComputedStyle(el).fontSize);
           const scale = (availWidth * 0.98) / naturalWidth;
