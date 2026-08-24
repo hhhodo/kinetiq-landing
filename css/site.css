@@ -146,6 +146,11 @@ html{overflow-x:hidden;max-width:100vw;scroll-behavior:smooth;scroll-padding-top
   .app__frame{width:100%;}
 }
 
+/* app 바로 아래, lineup 바로 위 여백을 없애 Reveal 섹션이 위아래 공백 없이 바로
+   붙어서 시작/끝나도록 함(.section의 위/아래 패딩 중 Reveal과 맞닿는 쪽만 제거) */
+.app{padding-bottom:0;}
+.lineup{padding-top:0;}
+
 /* ---------- reveal (full-bleed, 이미지·글·이미지·글·이미지 5줄, 모두 동시에 좌→우 채움) ---------- */
 .reveal{position:relative;height:280vh;}
 .reveal__sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden;}
