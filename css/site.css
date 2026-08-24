@@ -82,7 +82,7 @@ html{overflow-x:hidden;max-width:100vw;scroll-behavior:smooth;scroll-padding-top
 }
 
 /* ---------- marquee (full-bleed, 대형 워드마크 배너) ---------- */
-.marquee{overflow:hidden;padding-block:var(--space-11);background:var(--color-canvas);
+.marquee{overflow:hidden;padding-block:var(--space-section);background:var(--color-canvas);
   display:flex;align-items:center;min-height:46vh;}
 .marquee-track{overflow:hidden;width:100%;}
 .marquee-track__inner{display:flex;align-items:center;gap:var(--space-9);width:max-content;
@@ -225,7 +225,7 @@ html{overflow-x:hidden;max-width:100vw;scroll-behavior:smooth;scroll-padding-top
 /* padding-bottom은 안 줌 — .statement__media가 bottom:0으로 이 섹션 바닥에
    딱 붙어야 해서, 아래쪽에 패딩을 주면 그만큼 안쪽으로 들어가 버림 */
 .statement{position:relative;overflow:hidden;min-height:60vh;display:flex;align-items:center;
-  padding-top:var(--space-11);background:var(--color-canvas);}
+  padding-top:var(--space-section);background:var(--color-canvas);}
 .statement__bg{position:absolute;inset:0;top:auto;height:18%;width:100%;object-fit:cover;opacity:.6;}
 .statement__grid{position:relative;z-index:1;width:100%;display:grid;grid-template-columns:repeat(12,1fr);gap:var(--grid-gutter-lg);align-items:center;}
 /* 텍스트는 원래대로 섹션 중앙에 두고, 이미지만 섹션 하단에 고정(그리드 흐름과 분리) */
@@ -240,13 +240,13 @@ html{overflow-x:hidden;max-width:100vw;scroll-behavior:smooth;scroll-padding-top
   transition:background .2s ease,color .2s ease;}
 .statement__btn:hover{background:var(--text-default);color:var(--text-default-inverse);}
 @media (max-width:1024px){
-  .statement{flex-direction:column;align-items:stretch;padding-block:var(--space-11);}
+  .statement{flex-direction:column;align-items:stretch;padding-block:var(--space-section);}
   .statement__copy{grid-column:1/13;text-align:left;}
   .statement__media{position:static;width:min(360px,calc(100% - var(--gutter) * 2));margin:0 auto var(--space-6);}
 }
 
 /* ---------- footer (full-bleed, 최소 구성: 브랜드 + 소셜 + 저작권) ---------- */
-.footer{background:var(--color-primary-900);color:var(--text-default-inverse);padding-block:var(--space-8);}
+.footer{background:var(--color-primary-900);color:var(--text-default-inverse);padding-block:var(--space-section);}
 .footer__row{padding-bottom:var(--space-8);border-bottom:1px solid var(--color-primary-700);}
 .footer__col--brand{display:flex;flex-direction:column;gap:var(--space-6);}
 .footer__mark{display:block;font-size:var(--fs-h1);font-weight:var(--fw-strong);}
